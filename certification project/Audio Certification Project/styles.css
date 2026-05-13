@@ -1,0 +1,194 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+*, *::before, *::after {
+  box-sizing:inherit;
+  margin: 0;
+  padding: 0;
+}
+body{
+background: #3A2858;
+  min-height:100vh;
+}
+/****GLOBAL-START****/
+div#drum-machine{
+  display:flex;
+  flex-direction:column;
+  border-radius: 15px;
+  width:300px;
+  height:75vh;
+  margin:10% auto;
+  border-top: 3px solid #b46cff;  /* 上边框：最亮（高光） */
+  border-left: 3px solid #9056cc;  /* 左边框：次亮 */ 
+  border-right: 3px solid #6c4099;  /* 右边框：次暗（阴影） */
+  border-bottom: 3px solid #472a65;  /* 下边框：最暗（阴影） */ 
+  box-shadow:1px 1px 2px 2px #181024;
+}
+/****GLOBAL-END****/
+
+
+
+/****TOP-START****/
+div#pad-bank{
+  /* 让元素在每个格子里居中 */
+  height:40vh;
+  /* border:solid red 2px; */
+  display:grid;
+  place-items: center;
+  grid-template-rows:repeat(3,1fr);
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+}
+
+p#displayTitle{
+  font-size:2.5rem;
+  margin:1rem auto;
+  color:linen;
+  font-weight: bold;
+}
+
+#pad-bank>.drum-pad{
+  color:linen;
+  font-size:2.8rem;
+  font-weight:bold;
+  height:80%;
+  /* 强制宽高比 1:1 自动正方形 */
+  aspect-ratio: 1 / 1;
+  cursor:pointer;
+  background-color:#4B3370;
+  border: 3px solid #a76af9;
+  border-radius:15%;
+  box-shadow:1px 1px 3px 2px #181024;
+}
+#pad-bank>button:hover{
+  background-color:#60428F;
+}
+#pad-bank> button:active{
+  background-color:#4B3370;
+  height:75%;
+  /* 强制宽高比 1:1 自动正方形 */
+  aspect-ratio: 1 / 1;
+  border: 3px solid #8454c5;
+  box-shadow:0 0 0 0 #be6cff;
+  font-size:2.75rem;
+
+}
+/****TOP-END****/
+
+
+/****BOTTOM-START****/
+div#displayPart{
+  /* border:2px solid green; */
+  height:35vh;
+  display:flex;
+  flex-direction:column;
+}
+#display{
+  color:linen;
+  font-size:2rem;
+  width:85%;
+  padding:1rem;
+  margin:1rem auto;
+}
+
+#power-control{
+  padding:1rem 2.2rem;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-direction:col;
+}
+
+.control-label{
+  color: linen;
+  font-size:2rem;
+
+}
+/* 这里同时也是初始状态--开启(轨道) */
+#power-control-div{
+  transition:0.3s;
+  position:relative;
+  overflow:hidden;
+  font-size:2rem;
+  border: 3px solid #8454c5;
+  width:50px;
+  /* 弯曲为高度一般=>胶囊半圆 */
+  height:30px;
+  border-radius:15px;
+  /* 关闭样式 */
+  background-color:#a76af9;
+}
+
+/* 要怎么调用呢?不需要主动调用Js中toggle类就行了.
+   只写一个 div，用 CSS ::before 当滑块，JS 只控制给它加 / 删 class，切换背景色、滑块位移*/
+/* 控制圆圈 */
+#power-control-div::before{
+  content:"";
+  position:absolute;
+  z-index:999;
+  top: 50%;
+  left: 2px;
+  height:20px;
+  width:20px;
+  background-color: linen;
+  box-shadow:1px 1px 1px 1px #4d4d4d;
+  border-radius:50%;
+  transition:0.3s;
+  /* 初始开启样式 */
+  transform:translateY(-50%) translateX(100%);
+}
+
+#power-control-div.power-off{
+  background-color:#6c757d;
+
+}
+#power-control-div.power-off::before{
+  transform:translateY(-50%) translateX(0);
+}
+#volume-control{
+  padding:1rem 2.2rem;
+}
+/* 音量键 第一步：先给整个滑块清空默认样式（必须写！） */
+#volume-control-input{
+  -webkit-appearance:none;
+  appearance:none;
+  /* border:1px solid red; */
+  /* margin-left:20px; */
+  /* 行内元素不生效,变成块级元素margin:auto才生效 */
+  display:block;
+  margin:1rem auto;
+  width:200px;
+  height:16px;
+  background: transparent;
+  cursor: pointer; 
+}
+/* 第二步：再写圆按钮 */
+#volume-control-input::-webkit-slider-thumb{ /*改圆按钮（大小、圆角、颜色、阴影）*/
+  margin-top:-8px;
+  appearance: none; /* 这里必须加！ */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; /* 变成正圆 */
+  background: #a76af9; /* 圆的填充主色 */
+
+}
+/* 第三步：改整条轨道 */
+#volume-control-input::-webkit-slider-runnable-track{ 
+  /* margin-top: -100px;  */
+  height:4px;
+  border-radius:2px;
+  background:#e5e5e5;
+}
+/****BOTTOM-END****/
+
+/****SAME-PART-START****/
+#power-control-div,#display{
+  border-top: 3px solid #472a65;   /* 最暗 → 上边阴影 */
+  border-left: 3px solid #6c4099;  /* 次暗 → 左边阴影 */
+  border-right: 3px solid #9056cc; /* 次亮 → 右边高光 */
+  border-bottom: 3px solid #b46cff;/* 最亮 → 下边高光 */
+  box-shadow:1px 1px 2px 2px #181024 inset;
+}
+/****SAME-PART-END****/
