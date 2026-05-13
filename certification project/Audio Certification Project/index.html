@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Drum Machine</title>
+    <link rel="stylesheet" href="styles.css"/>
+  </head>
+
+<body>
+  <div id="drum-machine">
+    <p id="displayTitle">Drum Machine
+    </p>
+    <div id="pad-bank">
+      <!-- 点击+按键都要触发音频 -->
+      <!-- 绑定音频+文本 -->
+      <button id="durm1" class="drum-pad">
+        <audio
+          id="Q"
+          class="clip"
+          src="https://cdn.freecodecamp.org/curriculum/drum/Heater-1.mp3"
+        ></audio>
+        Q
+      </button>
+      <button id="durm2" class="drum-pad">
+        <audio
+          id="W"
+          class="clip"
+          src="https://cdn.freecodecamp.org/curriculum/drum/Heater-2.mp3"
+        ></audio>
+        W
+      </button>
+      <button id="durm3" class="drum-pad">
+        <audio
+          id="E"
+          class="clip"
+          src="https://cdn.freecodecamp.org/curriculum/drum/Heater-3.mp3"
+        ></audio>
+        E
+      </button>
+      <button id="durm4" class="drum-pad">
+        <audio
+          id="A"
+          class="clip"
+          src="https://cdn.freecodecamp.org/curriculum/drum/Heater-4_1.mp3"
+        ></audio>
+        A
+      </button>
+      <button id="durm5" class="drum-pad">
+        <audio
+          id="S"
+          class="clip"
+          src="https://cdn.freecodecamp.org/curriculum/drum/Heater-6.mp3"
+        ></audio>
+        S
+      </button>
+      <button id="durm6" class="drum-pad">
+        <audio
+          id="D"
+          class="clip"
+          src="https://cdn.freecodecamp.org/curriculum/drum/Dsc_Oh.mp3"
+        ></audio>
+        D
+      </button>
+      <button id="durm7" class="drum-pad">
+        <audio
+          id="Z"
+          class="clip"
+          src="https://cdn.freecodecamp.org/curriculum/drum/Kick_n_Hat.mp3"
+        ></audio>
+        Z
+      </button>
+      <button id="durm8" class="drum-pad">
+        <audio
+          id="X"
+          class="clip"
+          src="https://cdn.freecodecamp.org/curriculum/drum/RP4_KICK_1.mp3"
+        ></audio>
+        X
+      </button>
+      <button id="durm9" class="drum-pad">
+        <audio
+          id="C"
+          class="clip"
+          src="https://cdn.freecodecamp.org/curriculum/drum/Cev_H2.mp3"
+        ></audio>
+        C
+      </button>
+    </div>
+    <p id="display">
+      Drum Name
+    </p>
+    <div id="displayPart">
+      <!-- 触发音频此处要显示drum name -->
+
+
+      <div id="power-control" >
+        <label id="power-control-label"
+        class="control-label"
+        for="power-control-div">Power Control:On</label>
+        <div id="power-control-div" class=""></div>
+      </div>
+      <div id="volume-control">
+        <label id="volume-control-label"
+        class="control-label"
+        for="power-control-div">Volumn</label>
+        <input id="volume-control-input" type="range">
+      </div>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
