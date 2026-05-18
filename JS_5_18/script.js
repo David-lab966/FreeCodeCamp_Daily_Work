@@ -25,3 +25,8 @@ const countdown = (num) => {
   }
 }
 console.log(countdown(2));
+//countdown - another way
+const countdown = (num) => {
+  if (num < 1) return [];
+  return [num, ...countdown(num - 1)];
+};
