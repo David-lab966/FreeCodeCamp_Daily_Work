@@ -30,3 +30,11 @@ const countdown = (num) => {
   if (num < 1) return [];
   return [num, ...countdown(num - 1)];
 };
+
+//3,5=>3,4,5
+const rangeOfNumbers = (startNum,endNum) => {
+  if(startNum > endNum) return[];
+  return [startNum,...rangeOfNumbers(startNum+1,endNum)];
+}
+console.log(rangeOfNumbers(5,5));
+
